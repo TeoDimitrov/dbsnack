@@ -1,0 +1,81 @@
+<div id="login-container">
+  <div id="login-form-container" class="mdl-grid">
+    <form method="post" #loginForm="ngForm" (ngSubmit)="onSubmit()"
+          class="mdl-cell mdl-cell--4-col demo-card-square mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">Login</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="email" name="username" required
+                 [(ngModel)]="loginModel.username" required #username="ngModel">
+          <label class="mdl-textfield__label" for="email">Email</label>
+        </div>
+        <div *ngIf="username.errors && (username.dirty || username.touched)">
+          <div class="invalid-text" [hidden]="!username.errors.required">
+            Email is required
+          </div>
+        </div>
+        <div *ngIf="isWrongCredentials">
+          <div class="invalid-text">
+            Invalid credentials
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="password" id="password" name="password"
+                 [(ngModel)]="loginModel.password" required #password="ngModel">
+          <label class="mdl-textfield__label" for="password">Password</label>
+        </div>
+        <div *ngIf="password.errors && (password.dirty || password.touched)">
+          <div class="invalid-text" [hidden]="!password.errors.required">
+            Password is required
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch">
+          <input type="checkbox" id="switch" class="mdl-switch__input" [(ngModel)]="loginModel.isRememberMe"
+                 name="isActive">
+          <span class="mdl-switch__label">Remember Me</span>
+        </label>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div id="button-container">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Login
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="login-form-addition" class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col ">
+    <span id="forgot-password">
+      <a [routerLink]="['/password/reset']">Forgot Password?</a>
+    </span>
+      <span id="register">
+      <a [routerLink]="['/register']">Register</a>
+    </span>
+    </div>
+  </div>
+
+  <div id="login-social-container" class="mdl-grid">
+    <div id="login-social-card" class="mdl-cell mdl-cell--4-col demo-card-square mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Or sign with</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <form ngNoForm method="post" action="/connect/facebook" id="button-social-container">
+          <input type="hidden" name="scope" value="public_profile, email"/>
+          <input type="image" src="../../../assets/images/fb-button.png" border="0" alt="Submit"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="progress-bar-container">
+  <pb></pb>
+</div>

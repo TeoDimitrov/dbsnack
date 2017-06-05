@@ -1,0 +1,86 @@
+.mdl-textfield {
+  width: 100%;
+}
+
+#editor-table-container {
+  align-items: center;
+  justify-content: center;
+}
+
+#editor-table-container {
+  padding-bottom: 0;
+}
+
+.mdl-button {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+#editor-container {
+  margin-top: 3%;
+}
+
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
+.mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
+  color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield__label:after {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+.invalid-text {
+  color: rgb(213, 0, 0);
+  font-size: 12px;
+}
+
+.mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
+  color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield.is-invalid .mdl-textfield__label:after {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield.is-invalid .mdl-textfield__input {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+thead tr th label .mdl-checkbox__box-outline {
+  display: none !important;
+}
+
+.mdl-checkbox__box-outline {
+  display: none !important;
+}
+
+thead tr th label {
+  display: none !important;
+}
+/*Fix color*/
+.mdl-switch__ripple-container .mdl-ripple {
+  background: rgb(33, 150, 243)!important;
+}
+/*Fix color*/
+.mdl-switch.is-checked .mdl-switch__thumb{
+  background: rgb(33, 150, 243)!important;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.section-title {
+  color: #757575;
+  font-weight: 300;
+  font-size: 50px;
+  padding-left: 16px;
+}

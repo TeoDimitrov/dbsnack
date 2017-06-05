@@ -1,0 +1,67 @@
+<!-- Menu -->
+<div class="mdl-layout-container">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Image -->
+        <a [routerLink]="['/']">
+        <img class="mdl-layout-title" src="../assets/images/icon.png" />
+        </a>
+        <!-- Title -->
+        <span class="mdl-layout-title" [routerLink]="['/']">Snack Beta 0.01</span>
+
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a id="nav-link-free-trainings" class="mdl-navigation__link" [routerLink]="['trainings']">FREE TRAININGS</a>
+          <a class="mdl-navigation__link" [routerLink]="['login']" *ngIf="!authService.isAuthenticated()">LOGIN</a>
+          <span id="user-full-name" class="mdl-navigation__link" *ngIf="authService.isAuthenticated()">{{authService?.getUserFullName()}}</span>
+          <button id="demo-menu-lower-right"
+                  class="mdl-button mdl-js-button mdl-button--icon" [ngClass]="{'invisible-buttons': !authService.isAuthenticated()}">
+            <i class="material-icons">more_vert</i>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Menu</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" [routerLink]="['/']">Home</a>
+        <a class="mdl-navigation__link" [routerLink]="['trainings']">Free
+          Trainings</a>
+        <a class="mdl-navigation__link" [routerLink]="['login']" *ngIf="!authService.isAuthenticated()">Login</a>
+        <!--<a class="mdl-navigation__link" *ngIf="authService.isAuthenticated()">Your Trainings</a>-->
+        <a class="mdl-navigation__link" [routerLink]="['edit/trainings']" *ngIf="authService.isRoleEditor()">Trainings Management</a>
+        <a class="mdl-navigation__link mdl-menu__item--full-bleed-divider" *ngIf="authService.isRoleAdmin()">User Management</a>
+        <a class="mdl-navigation__link" [routerLink]="['/']" *ngIf="authService.isAuthenticated()" (click)="logout()">Logout</a>
+      </nav>
+    </div>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+        for="demo-menu-lower-right">
+      <!--<li class="mdl-menu__item">Your Trainings</li>-->
+      <li class="mdl-menu__item" [routerLink]="['edit/trainings']" *ngIf="authService.isRoleEditor()">Trainings Management</li>
+      <li class="mdl-menu__item mdl-menu__item--full-bleed-divider" *ngIf="authService.isRoleAdmin()">User Management</li>
+      <li class="mdl-menu__item" (click)="logout()">Logout</li>
+    </ul>
+
+    <main class="mdl-layout-content">
+      <div class="page-content">
+
+        <!-- Router -->
+        <router-outlet></router-outlet>
+
+        <!-- Footer -->
+        <footer id="footer" class="mdl-mini-footer">
+          <div class="mdl-mini-footer__left-section">
+            <div class="mdl-logo">DBSnack</div>
+            <ul class="mdl-mini-footer__link-list">
+              <li><a href="#">Privacy & Terms</a></li>
+              <li><a href="#">Author</a></li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </main>
+  </div>
+</div>

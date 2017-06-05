@@ -1,0 +1,64 @@
+#front-image-container {
+  width: 100%;
+  position: relative;
+}
+
+#front-image {
+  position: relative;
+  width: 100%;
+}
+
+#motto-on-image {
+  width: 100%;
+  font-weight: 300;
+  font-size: 50px;
+  z-index: 100;
+  position: absolute;
+  color: #757575 !important;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#btn-go-to-mission {
+  position: relative;
+  background-color: rgb(33, 150, 243);
+  bottom: 26px;
+  left: 75%;
+}
+
+.demo-card-square.mdl-card {
+  height: 360px;
+}
+
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: bottom right 15% no-repeat rgb(33, 150, 243);
+}
+
+.mdl-card__title-text {
+  position: absolute;
+  z-index: 100;
+}
+
+.button-details {
+  color: rgb(33, 150, 243) !important;
+}
+
+@media screen and (max-width: 860px) {
+  #motto-on-image {
+    font-size: 20px;
+  }
+
+  #front-image {
+    width: auto;
+    height: auto;
+    max-height: 300px;
+  }
+
+  #btn-go-to-mission {
+    visibility: hidden;
+  }
+}
+

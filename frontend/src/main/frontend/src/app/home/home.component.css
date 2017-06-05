@@ -1,0 +1,136 @@
+#front-image-container {
+  width: 100%;
+  position: relative;
+}
+
+#front-image {
+  position: relative;
+  width: 100%;
+}
+
+#motto-on-image {
+  width: 100%;
+  font-weight: 300;
+  font-size: 50px;
+  z-index: 100;
+  position: absolute;
+  color: #757575 !important;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#btn-go-to-mission {
+  position: relative;
+  background-color: rgb(33, 150, 243);
+  bottom: 26px;
+  left: 75%;
+}
+
+#education-container {
+  position: relative;
+  width: 100%;
+}
+
+#education-subtitle {
+  font-weight: 200;
+  font-size: 30px;
+  color: #757575;
+  margin-top: 0;
+  padding-left: 20px;
+}
+
+#education-subtitle-text {
+  color: #757575;
+  font-weight: 100;
+  padding-left: 20px;
+}
+
+#education-grid {
+  position: relative;
+}
+
+#education-image-container {
+  text-align: right !important;
+}
+
+#education-image {
+  padding-right: 20px;
+  /*width: 100%;*/
+}
+
+#real-time-image {
+  padding-left: 20px;
+}
+
+#real-time-container {
+  background-color: #f6f6f6;
+  position: relative;
+  width: 100%;
+}
+
+#real-time-subtitle {
+  font-weight: 200;
+  font-size: 30px;
+  color: #757575;
+  margin-top: 0;
+  padding-right: 20px;
+}
+
+#real-time-subtitle-text {
+  color: #757575;
+  font-weight: 100;
+  padding-right: 20px;
+}
+
+#real-time-grid {
+  position: relative;
+}
+
+#real-time-image-container {
+}
+
+#real-time-image {
+  /*width: 100%;*/
+}
+
+#real-time-content-container {
+  text-align: right !important;
+}
+
+@media screen and (max-width: 860px)  {
+  #motto-on-image {
+    font-size: 20px;
+  }
+
+  #front-image {
+    width: auto;
+    height: auto;
+    max-height: 300px;
+  }
+
+  #btn-go-to-mission {
+    visibility: hidden;
+  }
+
+  #real-time-subtitle-text, #real-time-subtitle {
+    text-align: left !important;
+  }
+
+  #education-image-container {
+    text-align: left !important;
+  }
+
+  #education-subtitle, #education-subtitle-text, #education-image,
+  #real-time-subtitle-text, #real-time-subtitle, #real-time-image {
+    padding: 0;
+  }
+
+  #education-image, #real-time-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+

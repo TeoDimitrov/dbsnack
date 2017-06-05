@@ -1,0 +1,51 @@
+.lesson-assignment, .training-container {
+  border-bottom: 1px solid rgb(33, 150, 243);
+}
+
+.tables-container {
+  border-right: 1px solid rgb(33, 150, 243);
+}
+
+.sql-editor {
+  padding-bottom: 0px;
+}
+
+#button-container {
+  float: right;
+  margin-bottom: 16px;
+}
+
+.mdl-button {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
+.mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
+  color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield__label:after {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+h1 {
+  font-weight: 200;
+  font-size: 56px;
+  color: #757575;
+  display: table;
+  margin: 0 auto;
+}
+
+#previous-button{
+  float: left;
+  margin-top: 18px;
+  margin-left: 16px;
+}
+
+#next-button{
+  float: right;
+  margin-top: 18px;
+  margin-right: 16px;
+}
+

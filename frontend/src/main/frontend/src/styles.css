@@ -1,0 +1,12 @@
+.mdl-layout__header .mdl-layout__drawer-button i {
+  color: #757575 !important;
+}
+
+::selection {
+  color: white;
+  background: rgb(33, 150, 243)!important;
+}
+::-moz-selection {
+  color: white;
+  background: rgb(33, 150, 243)!important;
+}

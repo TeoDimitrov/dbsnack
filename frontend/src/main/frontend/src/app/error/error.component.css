@@ -1,0 +1,33 @@
+img {
+  float: right;
+}
+
+#text-holder {
+  display: table;
+  overflow: hidden;
+  height: 100%;
+}
+
+h2 {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#error-subtitle {
+  font-weight: 200;
+  font-size: 60px;
+  color: #757575;
+  margin-top: 0;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  #error-subtitle {
+    font-size: 45px;
+  }
+}

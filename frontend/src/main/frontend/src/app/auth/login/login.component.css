@@ -1,0 +1,92 @@
+.mdl-textfield {
+  width: 100%;
+}
+
+#login-form-container, #login-form-addition, #login-social-container {
+  align-items: center;
+  justify-content: center;
+}
+
+#login-form-container {
+  padding-bottom: 0;
+}
+
+#login-form-addition {
+  padding-top: 0;
+}
+
+.mdl-card__supporting-text {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#button-container {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  float: right;
+}
+
+.mdl-button {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+#register a, #forgot-password a {
+  color: #757575;
+  font-weight: 100;
+}
+
+#register {
+  float: right;
+}
+
+#login-social-container {
+  padding-top: 0;
+}
+
+#login-social-card {
+  min-height: 0;
+}
+
+#button-social-container {
+  padding-bottom: 16px;
+}
+
+#login-container {
+  margin-top: 3%;
+}
+
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+.mdl-textfield--floating-label.is-dirty .mdl-textfield__label,
+.mdl-textfield--floating-label.has-placeholder .mdl-textfield__label {
+  color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield__label:after {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+.invalid-text {
+  color: rgb(213, 0, 0);
+  font-size: 12px;
+}
+
+.mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
+  color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield.is-invalid .mdl-textfield__label:after {
+  background-color: rgb(33, 150, 243) !important;
+}
+
+.mdl-textfield.is-invalid .mdl-textfield__input {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+#progress-bar-container {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}

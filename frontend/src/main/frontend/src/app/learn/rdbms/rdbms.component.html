@@ -1,0 +1,77 @@
+<div class="training-container">
+  <button id="previous-button"
+          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          (click)="onPrevious()">
+    Previous
+  </button>
+  <button id="next-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          (click)="onNext()" [disabled]="!participatedTraining?.currentParticipatedLesson?.completed">
+    Next
+  </button>
+  <h1>
+    <span>{{participatedTraining?.currentParticipatedLesson?.lesson?.topic?.training?.name}}:</span>
+    <span>{{participatedTraining?.currentParticipatedLesson?.lesson?.topic?.name}}:</span>
+    <span>{{participatedTraining?.currentParticipatedLesson?.lesson?.name}}</span>
+  </h1>
+</div>
+<div class="mdl-grid lesson-assignment">
+  <div class="mdl-cell mdl-cell--4-col mdl-textfield mdl-js-textfield">
+    <textarea class="mdl-textfield__input" rows="5"
+              readonly>Lesson: {{participatedTraining?.currentParticipatedLesson?.lesson?.content}}</textarea>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col mdl-textfield mdl-js-textfield">
+    <textarea class="mdl-textfield__input" readonly rows="5">Exercise: {{participatedTraining?.currentParticipatedLesson?.lesson?.exercise}}</textarea>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col mdl-textfield mdl-js-textfield">
+    <textarea class="mdl-textfield__input" readonly
+              rows="5">SQL Result: {{relationalDatabaseResult?.message}}</textarea>
+  </div>
+</div>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col tables-container">
+    <ul class="demo-list-item mdl-list">
+      <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">Tables:</span>
+      </li>
+      <div *ngFor="let table of relationalDatabaseResult?.tablesMetaData | keys">
+        <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+      {{table}}
+    </span>
+        </li>
+        <ul *ngFor="let columnData of relationalDatabaseResult?.tablesMetaData[table]">
+          <li><span>{{columnData.columnName}}</span><span> > </span><span>{{columnData.columnType}}</span></li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <div class="mdl-cell mdl-cell--9-col">
+    <form class="mdl-cell mdl-cell--12-col">
+      <div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col sql-editor">
+        <textarea rows="10" class="mdl-textfield__input" type="text" id="sql" placeholder=">SQL" name="sqlStatement"
+                  [(ngModel)]="sqlStatement">{{sqlStatement}}</textarea>
+      </div>
+      <div id="button-container">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                (click)="onSubmit()">
+          Submit
+        </button>
+      </div>
+    </form>
+    <pb></pb>
+    <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric"
+            *ngFor="let columnName of relationalDatabaseResult?.queryResult?.columnNames">{{columnName}}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of relationalDatabaseResult?.queryResult?.rowData">
+        <td class="mdl-data-table__cell--non-numeric" *ngFor="let data of row">{{data}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

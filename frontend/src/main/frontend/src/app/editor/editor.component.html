@@ -1,0 +1,406 @@
+<div id="editor-container">
+  <h1 class="section-title">Trainings</h1>
+  <div class="mdl-grid">
+    <table class=" mdl-cell mdl-cell--6-col mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">ID</th>
+        <th class="mdl-data-table__cell--non-numeric">Name</th>
+        <th class="mdl-data-table__cell--non-numeric">Author</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let training of trainings" (click)="onSelectTraining(training)"
+          [class.selected]="training === selectedTraining">
+        <td class="mdl-data-table__cell--non-numeric">{{training.id}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{training.name}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{training.authorUsername}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <form (ngSubmit)="onSubmitTraining()"
+          class="mdl-cell mdl-cell--6-col mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="name" [(ngModel)]="selectedTraining.name" name="name"
+                 required minlength="5" maxlength="20" #name="ngModel">
+          <label class="mdl-textfield__label" for="name">Name</label>
+        </div>
+        <div *ngIf="name.errors && (name.dirty || name.touched)">
+          <div class="invalid-text" [hidden]="!name.errors.required">
+            Name is required
+          </div>
+          <div class="invalid-text" [hidden]="!name.errors.minlength">
+            Name should be between 5 an 20 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!name.errors.maxlength">
+            Name should be between 5 an 20 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea class="mdl-textfield__input" type="text" id="firstName" [(ngModel)]="selectedTraining.description"
+                    name="firstName" required minlength="10" maxlength="200" #description="ngModel"></textarea>
+          <label class="mdl-textfield__label" for="firstName">Description</label>
+        </div>
+        <div *ngIf="description.errors && (description.dirty || description.touched)"
+        >
+          <div class="invalid-text" [hidden]="!description.errors.required">
+            Description is required
+          </div>
+          <div class="invalid-text" [hidden]="!description.errors.minlength">
+            Description should be between 10 and 200 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!description.errors.maxlength">
+            Description should be between 10 and 200 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch"
+               [class.is-checked]="selectedTraining.isActive">
+          <input type="checkbox" id="switch" class="mdl-switch__input" [(ngModel)]="selectedTraining.isActive"
+                 name="isActive">
+          <span class="mdl-switch__label">Is Active</span>
+        </label>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <span>Technology stack: </span>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1"
+               [class.is-checked]="selectedTraining.technologyStack==='MYSQL'">
+          <input type="radio" id="option-1" class="mdl-radio__button" name="options" value="MYSQL" required
+                 [(ngModel)]="selectedTraining.technologyStack" name="technologyStack">
+          <span class="mdl-radio__label">MySQL</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2"
+               [class.is-checked]="selectedTraining.technologyStack==='ORACLE'">
+          <input type="radio" id="option-2" class="mdl-radio__button" name="options" value="ORACLE" required
+                 [(ngModel)]="selectedTraining.technologyStack" name="technologyStack">
+          <span class="mdl-radio__label">Oracle</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3"
+               [class.is-checked]="selectedTraining.technologyStack==='POSGRESQL'">
+          <input type="radio" id="option-3" class="mdl-radio__button" name="options" value="POSTGRESQL" required
+                 [(ngModel)]="selectedTraining.technologyStack" name="technologyStack">
+          <span class="mdl-radio__label">PostgreSQL</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4"
+               [class.is-checked]="selectedTraining.technologyStack==='MONGODB'">
+          <input type="radio" id="option-4" class="mdl-radio__button" name="options" value="MONGODB" required
+                 [(ngModel)]="selectedTraining.technologyStack" name="technologyStack">
+          <span class="mdl-radio__label">MongoDB</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-5"
+               [class.is-checked]="selectedTraining.technologyStack==='NEO4J'">
+          <input type="radio" id="option-5" class="mdl-radio__button" name="options" value="NEO4J" required
+                 [(ngModel)]="selectedTraining.technologyStack" name="technologyStack">
+          <span class="mdl-radio__label">Neo4j</span>
+        </label>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <span>Level: </span>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-level-1"
+               [class.is-checked]="selectedTraining.level==='BEGINNER'">
+          <input type="radio" id="option-level-1" class="mdl-radio__button" name="options" value="BEGINNER" required
+                 [(ngModel)]="selectedTraining.level" name="level">
+          <span class="mdl-radio__label">Beginner</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-level-2"
+               [class.is-checked]="selectedTraining.level==='INTERMEDIATE'">
+          <input type="radio" id="option-level-2" class="mdl-radio__button" name="options" value="INTERMEDIATE" required
+                 [(ngModel)]="selectedTraining.level" name="level">
+          <span class="mdl-radio__label">Intermediate</span>
+        </label>
+        <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-level-3"
+               [class.is-checked]="selectedTraining.level==='ADVANCED'">
+          <input type="radio" id="option-level-3" class="mdl-radio__button" name="options" value="ADVANCED" required
+                 [(ngModel)]="selectedTraining.level" name="level">
+          <span class="mdl-radio__label">Advanced</span>
+        </label>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="number" id="hours" [(ngModel)]="selectedTraining.requiredHours"
+                 name="requiredHours" required
+                 pattern="^[1-9]{1}\d?$" #requiredHours="ngModel">
+          <label class="mdl-textfield__label" for="name">Hours</label>
+        </div>
+        <div *ngIf="requiredHours.errors && (requiredHours.dirty || requiredHours.touched)">
+          <div class="invalid-text" [hidden]="!requiredHours.errors.required">
+            Hours are required
+          </div>
+          <div class="invalid-text" [hidden]="!requiredHours.errors.pattern">
+            Hours should be between 1 and 100
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div>
+          <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                  (click)="onAddNewTraining()">
+            New
+          </button>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                  >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <h1 class="section-title">Topics</h1>
+  <div class="mdl-grid">
+    <table class=" mdl-cell mdl-cell--6-col mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">ID</th>
+        <th class="mdl-data-table__cell--non-numeric">Name</th>
+        <th class="mdl-data-table__cell--non-numeric">Training ID</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let topic of selectedTraining.topics" (click)="onSelectTopic(topic)"
+          [class.selected]="topic === selectedTopic">
+        <td class="mdl-data-table__cell--non-numeric">{{topic.id}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{topic.name}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{selectedTraining.id}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <form (ngSubmit)="onSubmitTopic()"
+          class="mdl-cell mdl-cell--6-col mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" id="topicName" type="text" [(ngModel)]="selectedTopic.name" name="name"
+                 required minlength="5" maxlength="20" #topicName="ngModel">
+          <label class="mdl-textfield__label" for="topicName">Name</label>
+        </div>
+        <div *ngIf="topicName.errors && (topicName.dirty || topicName.touched)">
+          <div class="invalid-text" [hidden]="!topicName.errors.required">
+            Name is required
+          </div>
+          <div class="invalid-text" [hidden]="!topicName.errors.minlength">
+            Name should be between 5 an 20 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!topicName.errors.maxlength">
+            Name should be between 5 an 20 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea id="topicDescription" class="mdl-textfield__input" type="text" [(ngModel)]="selectedTopic.description"
+                    name="firstName" required minlength="10" maxlength="200" #topicDescription="ngModel"></textarea>
+          <label class="mdl-textfield__label" for="topicDescription">Description</label>
+        </div>
+        <div *ngIf="topicDescription.errors && (topicDescription.dirty || topicDescription.touched)"
+        >
+          <div class="invalid-text" [hidden]="!topicDescription.errors.required">
+            Description is required
+          </div>
+          <div class="invalid-text" [hidden]="!topicDescription.errors.minlength">
+            Description should be between 10 and 200 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!topicDescription.errors.maxlength">
+            Description should be between 10 and 200 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2"
+               [class.is-checked]="selectedTopic.isActive">
+          <input type="checkbox" id="switch-2" class="mdl-switch__input" [(ngModel)]="selectedTopic.isActive"
+                 name="isActive">
+          <span class="mdl-switch__label">Is Active</span>
+        </label>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="topicSecuence" class="mdl-textfield__input" type="number" [(ngModel)]="selectedTopic.sequence"
+                 name="sequence" required
+                 pattern="^[1-9]{1}\d?$" #topicSequence="ngModel">
+          <label class="mdl-textfield__label" for="topicSecuence">Sequence</label>
+        </div>
+        <div *ngIf="topicSequence.errors && (topicSequence.dirty || topicSequence.touched)">
+          <div class="invalid-text" [hidden]="!topicSequence.errors.required">
+            Sequence is required
+          </div>
+          <div class="invalid-text" [hidden]="!topicSequence.errors.pattern">
+            Sequence should be between 1 and 100
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div>
+          <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                  (click)="onAddNewTopic()">
+            New
+          </button>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                  >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <h1 class="section-title">Lessons</h1>
+  <div class="mdl-grid">
+    <table class=" mdl-cell mdl-cell--6-col mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <thead>
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">ID</th>
+        <th class="mdl-data-table__cell--non-numeric">Name</th>
+        <th class="mdl-data-table__cell--non-numeric">Topic ID</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let lesson of selectedTopic.lessons" (click)="onSelectLesson(lesson)"
+           [class.selected]="lesson === selectedLesson">
+        <td class="mdl-data-table__cell--non-numeric">{{lesson.id}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{lesson.name}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{selectedTopic.id}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <form (ngSubmit)="onSubmitLesson()"
+          class="mdl-cell mdl-cell--6-col mdl-shadow--2dp">
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="lessonName" class="mdl-textfield__input" type="text" [(ngModel)]="selectedLesson.name" name="name"
+                 required minlength="5" maxlength="20" #lessonName="ngModel">
+          <label class="mdl-textfield__label" for="lessonName">Name</label>
+        </div>
+        <div *ngIf="lessonName.errors && (lessonName.dirty || lessonName.touched)">
+          <div class="invalid-text" [hidden]="!lessonName.errors.required">
+            Name is required
+          </div>
+          <div class="invalid-text" [hidden]="!lessonName.errors.minlength">
+            Name should be between 5 an 20 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!lessonName.errors.maxlength">
+            Name should be between 5 an 20 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea  id="lessonDesc" class="mdl-textfield__input" type="text" [(ngModel)]="selectedLesson.description"
+                    name="firstName" required minlength="10" maxlength="200" #lessonDescription="ngModel"></textarea>
+          <label class="mdl-textfield__label" for="lessonDesc">Description</label>
+        </div>
+        <div *ngIf="lessonDescription.errors && (lessonDescription.dirty || lessonDescription.touched)"
+        >
+          <div class="invalid-text" [hidden]="!lessonDescription.errors.required">
+            Description is required
+          </div>
+          <div class="invalid-text" [hidden]="!lessonDescription.errors.minlength">
+            Description should be between 10 and 200 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!lessonDescription.errors.maxlength">
+            Description should be between 10 and 200 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea class="mdl-textfield__input" id="content" type="text" [(ngModel)]="selectedLesson.content"
+                    name="content" required minlength="10" maxlength="300" #content="ngModel"></textarea>
+          <label class="mdl-textfield__label" for="content">Content</label>
+        </div>
+        <div *ngIf="content.errors && (content.dirty || content.touched)"
+        >
+          <div class="invalid-text" [hidden]="!content.errors.required">
+            Content is required
+          </div>
+          <div class="invalid-text" [hidden]="!content.errors.minlength">
+            Content should be between 10 and 300 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!content.errors.maxlength">
+            Content should be between 10 and 300 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea class="mdl-textfield__input" id="exercise" type="text" [(ngModel)]="selectedLesson.exercise"
+                    name="exercise" required minlength="10" maxlength="300" #exercise="ngModel"></textarea>
+          <label class="mdl-textfield__label" for="exercise">Exercise</label>
+        </div>
+        <div *ngIf="exercise.errors && (exercise.dirty || exercise.touched)"
+        >
+          <div class="invalid-text" [hidden]="!exercise.errors.required">
+            Exercise is required
+          </div>
+          <div class="invalid-text" [hidden]="!exercise.errors.minlength">
+            Exercise should be between 10 and 300 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!exercise.errors.maxlength">
+            Exercise should be between 10 and 300 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea class="mdl-textfield__input" id="answer" type="text" [(ngModel)]="selectedLesson.answer"
+                    name="answer" maxlength="5000" #answer="ngModel"></textarea>
+          <label class="mdl-textfield__label" for="answer">Answer</label>
+        </div>
+        <div *ngIf="exercise.errors && (exercise.dirty || exercise.touched)">
+          <div class="invalid-text" [hidden]="!exercise.errors.maxlength">
+            Answer should be between up to 5000 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <textarea class="mdl-textfield__input" id="answerVerificationQuery" type="text" [(ngModel)]="selectedLesson.answerVerificationQuery"
+                    name="answerVerificationQuery" maxlength="5000" #answerVerificationQuery="ngModel"></textarea>
+          <label class="mdl-textfield__label" for="answerVerificationQuery">Answer Query</label>
+        </div>
+        <div *ngIf="answerVerificationQuery.errors && (answerVerificationQuery.dirty || answerVerificationQuery.touched)">
+          <div class="invalid-text" [hidden]="!answerVerificationQuery.errors.maxlength">
+            Answer query should be between up to 5000 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3"
+               [class.is-checked]="selectedLesson.isActive">
+          <input type="checkbox" id="switch-3" class="mdl-switch__input" [(ngModel)]="selectedLesson.isActive"
+                 name="isActive">
+          <span class="mdl-switch__label">Is Active</span>
+        </label>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input id="lessonSequence" class="mdl-textfield__input" type="number" [(ngModel)]="selectedLesson.sequence"
+                 name="sequence" required
+                 pattern="^[1-9]{1}\d?$" #lessonSequence="ngModel">
+          <label class="mdl-textfield__label" for="lessonSequence">Sequence</label>
+        </div>
+        <div *ngIf="lessonSequence.errors && (lessonSequence.dirty || lessonSequence.touched)">
+          <div class="invalid-text" [hidden]="!lessonSequence.errors.required">
+            Sequence is required
+          </div>
+          <div class="invalid-text" [hidden]="!lessonSequence.errors.pattern">
+            Sequence should be between 1 and 100
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div>
+          <button type="reset" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                  (click)="onAddNewLesson()">
+            New
+          </button>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                 >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

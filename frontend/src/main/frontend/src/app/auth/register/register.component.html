@@ -1,0 +1,108 @@
+<div id="login-container">
+  <div id="login-form-container" class="mdl-grid">
+    <form method="post" (ngSubmit)="onSubmit()"
+          class="mdl-cell mdl-cell--4-col demo-card-square mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">Register</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="email" id="username" [(ngModel)]="registerModel.username"
+                 name="username"
+                 required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #username="ngModel">
+          <label class="mdl-textfield__label" for="username">Email</label>
+        </div>
+        <div *ngIf="username.errors && (username.dirty || username.touched)">
+          <div class="invalid-text" [hidden]="!username.errors.required">
+            Email is required
+          </div>
+          <div class="invalid-text" [hidden]="!username.errors.pattern">
+            Invalid Email
+          </div>
+        </div>
+        <div *ngIf="isUsernameTaken">
+          <div class="invalid-text">
+            Email is taken
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="firstName" [(ngModel)]="registerModel.firstName"
+                 name="firstName" required minlength="3" maxlength="30" #firstName="ngModel">
+          <label class="mdl-textfield__label" for="firstName">First Name</label>
+        </div>
+        <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"
+        >
+          <div class="invalid-text" [hidden]="!firstName.errors.required">
+            First Name is required
+          </div>
+          <div class="invalid-text" [hidden]="!firstName.errors.minlength">
+            First Name should be between 3 and 30 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!firstName.errors.maxlength">
+            First Name should be between 3 and 30 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="lastName" [(ngModel)]="registerModel.lastName"
+                 name="lastName" required minlength="3" maxlength="30" #lastName="ngModel">
+          <label class="mdl-textfield__label" for="lastName">Last Name</label>
+        </div>
+        <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+          <div class="invalid-text" [hidden]="!lastName.errors.required">
+            Last Name is required
+          </div>
+          <div class="invalid-text" [hidden]="!lastName.errors.minlength">
+            Last Name should be between 3 and 30 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!lastName.errors.maxlength">
+            Last Name should be between 3 and 30 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="password" id="password" [(ngModel)]="registerModel.password"
+                 name="password" required minlength="6" maxlength="50" #password="ngModel">
+          <label class="mdl-textfield__label" for="password">Password</label>
+        </div>
+        <div *ngIf="password.errors && (password.dirty || password.touched)">
+          <div class="invalid-text" [hidden]="!password.errors.required">
+            Password is required
+          </div>
+          <div class="invalid-text" [hidden]="!password.errors.minlength">
+            Password should be between 6 and 50 symbols
+          </div>
+          <div class="invalid-text" [hidden]="!password.errors.maxlength">
+            Password should be between 6 and 50 symbols
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="password" id="confirmPassword" validateEqual="password"
+                 [(ngModel)]="registerModel.confirmPassword" name="confirmPassword" required #confirmPassword="ngModel">
+          <label class="mdl-textfield__label" for="confirmPassword">Confirm Password</label>
+        </div>
+        <div *ngIf="confirmPassword.dirty || confirmPassword.touched">
+          <div class="invalid-text" [hidden]="confirmPassword.valid">
+            Passwords are not matching
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div id="button-container">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Register
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="progress-bar-container">
+  <pb></pb>
+</div>

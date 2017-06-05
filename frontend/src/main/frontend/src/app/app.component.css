@@ -1,0 +1,43 @@
+.mdl-layout__header-row .mdl-navigation__link {
+  color: #757575 !important;
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-block;
+  height: 60px;
+  line-height: 68px;
+  background-color: transparent !important;
+  border-bottom: 4px solid transparent;
+}
+
+.mdl-layout__header-row .mdl-navigation__link:hover {
+  border-bottom: 4px solid rgb(33, 150, 243);
+}
+
+.mdl-layout__header {
+  color: #757575 !important;
+}
+
+.mdl-layout__header {
+  background-color: white !important;
+}
+
+.mdl-layout__header .mdl-layout__drawer-button i {
+  color: #757575 !important;
+}
+
+.mdl-layout__drawer {
+  z-index: 200;
+}
+
+.highlight-link {
+  border-bottom: 4px solid rgb(33, 150, 243) !important;
+}
+
+#user-full-name {
+  border-bottom: 4px solid transparent !important;
+}
+
+.invisible-buttons {
+  visibility: hidden;
+}
+

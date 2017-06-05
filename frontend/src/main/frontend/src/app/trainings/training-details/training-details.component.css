@@ -1,0 +1,81 @@
+.invisible-paragraph {
+  display: none;
+}
+
+.question__arrow {
+  float: right;
+}
+
+.topic-title {
+  font-weight: 300;
+  font-size: 30px;
+  color: #424242;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.lesson-title {
+  font-weight: 200;
+  font-size: 20px;
+  color: #424242;
+  z-index: 100;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.topic-title:hover, .lesson-title:hover {
+  color: rgb(33, 150, 243);
+}
+
+.topic-description, .lesson-description {
+  color: #757575;
+  font-weight: 100;
+}
+
+#button-start-training {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900;
+  background: rgb(33, 150, 243);
+}
+
+.demo-card-square.mdl-card {
+  height: 460px;
+}
+
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: bottom right 15% no-repeat rgb(33, 150, 243);
+}
+
+.mdl-card__title-text {
+  position: absolute;
+  z-index: 100;
+}
+
+#training-information {
+  align-items: center;
+  justify-content: center;
+}
+
+.training-card-subtitles {
+ position: relative;
+  bottom: 5px;
+  left: 5px
+}
+
+#training-description, #training-difficulty, #training-technology-stack, #training-time{
+  cursor: pointer;
+  cursor: hand;
+}
+
+@media screen and (max-width: 860px) {
+  #training-information {
+    align-items: baseline;
+    justify-content: baseline;
+  }
+}
