@@ -17,6 +17,7 @@ import {AuthGuard} from "./auth.guard";
 import {EditorGuard} from "./editor.guard";
 import {AdminGuard} from "./admin.guard";
 import {ProgressBarModule} from "../shared/progress/progress-bar.module";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {ProgressBarModule} from "../shared/progress/progress-bar.module";
     PasswordResetComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     MdlModule,

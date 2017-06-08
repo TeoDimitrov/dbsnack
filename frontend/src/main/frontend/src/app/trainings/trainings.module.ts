@@ -8,6 +8,8 @@ import {RouterModule} from "@angular/router";
 import {TrainingDetailsComponent} from "./training-details/training-details.component";
 import {TrainingDetailsService} from "./training-details/training-details.service";
 import {ProgressBarModule} from "../shared/progress/progress-bar.module";
+import {trainingsRoutes} from "./trainings.routes";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -15,14 +17,11 @@ import {ProgressBarModule} from "../shared/progress/progress-bar.module";
     TrainingDetailsComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
     ProgressBarModule,
-    RouterModule.forRoot([
-      {path: 'trainings', component: TrainingsComponent},
-      {path: 'trainings/:id/details', component: TrainingDetailsComponent}
-    ])
+    RouterModule.forChild(trainingsRoutes)
   ],
   providers: [TrainingsService, TrainingDetailsService],
   exports: [TrainingsComponent]

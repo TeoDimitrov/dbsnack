@@ -1,22 +1,20 @@
 import {NgModule} from "@angular/core";
-import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {ErrorComponent} from "./error.component";
+import {CommonModule} from "@angular/common";
+import {errorRoutes} from "./error.routing";
 
 @NgModule({
   declarations: [
     ErrorComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-        {path: 'error', component: ErrorComponent}
-      ]
-    )
+    RouterModule.forChild(errorRoutes)
   ],
   exports: [ErrorComponent]
 })

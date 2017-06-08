@@ -5,7 +5,7 @@
       <div class="mdl-layout__header-row">
         <!-- Image -->
         <a [routerLink]="['/']">
-        <img class="mdl-layout-title" src="../assets/images/icon.png" />
+        <img class="mdl-layout-title" src="./assets/images/icon.png" />
         </a>
         <!-- Title -->
         <span class="mdl-layout-title" [routerLink]="['/']">Snack Beta 0.01</span>
@@ -32,7 +32,7 @@
           Trainings</a>
         <a class="mdl-navigation__link" [routerLink]="['login']" *ngIf="!authService.isAuthenticated()">Login</a>
         <!--<a class="mdl-navigation__link" *ngIf="authService.isAuthenticated()">Your Trainings</a>-->
-        <a class="mdl-navigation__link" [routerLink]="['edit/trainings']" *ngIf="authService.isRoleEditor()">Trainings Management</a>
+        <a class="mdl-navigation__link" [routerLink]="['editor']" *ngIf="authService.isRoleEditor()">Trainings Management</a>
         <a class="mdl-navigation__link mdl-menu__item--full-bleed-divider" *ngIf="authService.isRoleAdmin()">User Management</a>
         <a class="mdl-navigation__link" [routerLink]="['/']" *ngIf="authService.isAuthenticated()" (click)="logout()">Logout</a>
       </nav>
@@ -40,7 +40,7 @@
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
         for="demo-menu-lower-right">
       <!--<li class="mdl-menu__item">Your Trainings</li>-->
-      <li class="mdl-menu__item" [routerLink]="['edit/trainings']" *ngIf="authService.isRoleEditor()">Trainings Management</li>
+      <li class="mdl-menu__item" [routerLink]="['editor']" *ngIf="authService.isRoleEditor()">Trainings Management</li>
       <li class="mdl-menu__item mdl-menu__item--full-bleed-divider" *ngIf="authService.isRoleAdmin()">User Management</li>
       <li class="mdl-menu__item" (click)="logout()">Logout</li>
     </ul>
